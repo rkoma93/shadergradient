@@ -49,6 +49,7 @@ function App() {
           }}
           pixelDensity={window.devicePixelRatio ?? 1.5}
           fov={45}
+          alpha={true}          // ← Add this! Enables transparent background
         >
           <ShaderGradient
             animate="on"
