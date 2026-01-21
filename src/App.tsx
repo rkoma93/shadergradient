@@ -46,10 +46,10 @@ function App() {
             height: '100%',
             display: 'block',       // removes tiny gaps sometimes caused by inline-block
             pointerEvents: 'none',
+            background: 'transparent',  // ← Critical: prevents black fill if renderer doesn't clear with alpha
           }}
           pixelDensity={window.devicePixelRatio ?? 1.5}
           fov={45}
-          alpha={true}          // ← Add this! Enables transparent background
         >
           <ShaderGradient
             animate="on"
