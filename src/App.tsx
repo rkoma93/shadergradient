@@ -11,7 +11,7 @@ function App() {
           padding: 0;
           height: 100%;
           width: 100%;
-          /* overflow: hidden; */ /* Keep commented if you want potential scroll later */
+          overflow: hidden;
           background: #000;           /* fallback color */
         }
 
@@ -40,7 +40,7 @@ function App() {
           height: '100%',
           overflow: 'hidden',
           background: '#000',
-          zIndex: -1, // keeps it behind future content if needed
+          zIndex: 0, // keeps it behind future content if needed
         }}
       >
         <ShaderGradientCanvas
