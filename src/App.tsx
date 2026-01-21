@@ -2,6 +2,10 @@
 import { useEffect, useState } from 'react';
 import { ShaderGradient, ShaderGradientCanvas } from '@shadergradient/react';
 
+// Optional: add these global styles in index.css or via a <style> tag
+// body, html { margin: 0; padding: 0; overflow: hidden; height: 100%; }
+// #root { height: 100%; }
+
 const gradientProps = {
   animate: 'on' as const,
   brightness: 1.2,
@@ -46,40 +50,41 @@ function App() {
     return () => window.removeEventListener('resize', updatePixelDensity);
   }, []);
 
-  const isLikelyMobile = /Mobi|Android|iPhone|iPad|iPod/.test(navigator.userAgent);
+  // Optional: hide scrollbars on mobile/desktop and enforce no-scroll
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+    
+    return () => {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    };
+  }, []);
 
   return (
     <div
       style={{
+        position: 'fixed',           // or absolute – fixed usually works better here
+        inset: 0,                    // top:0 right:0 bottom:0 left:0
         width: '100vw',
         height: '100vh',
         margin: 0,
         padding: 0,
         overflow: 'hidden',
-        position: 'relative',
-        background: '#000',
-        touchAction: 'none',
+        background: '#000',          // fallback color
       }}
     >
       <ShaderGradientCanvas
+        pixelDensity={pixelDensity}
         style={{
           position: 'absolute',
           inset: 0,
-          pointerEvents: 'none',
+          width: '100%',
+          height: '100%',
+          display: 'block',          // removes tiny gaps some browsers add
         }}
-        pixelDensity={isLikelyMobile ? Math.min(pixelDensity, 1.8) : pixelDensity}
-        fov={isLikelyMobile ? 50 : 45}
-        powerPreference={isLikelyMobile ? 'default' : 'high-performance'} // optional hint
       >
-        <ShaderGradient
-          {...gradientProps}
-          {...(isLikelyMobile && {
-            uDensity: 1.1,
-            uStrength: 3.2,
-            uSpeed: 0.35,
-            brightness: 1.1,
-          })}
-        />
+        <ShaderGradient {...gradientProps} />
       </ShaderGradientCanvas>
     </div>
   );
