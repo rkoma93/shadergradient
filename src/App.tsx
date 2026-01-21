@@ -4,19 +4,24 @@ import { ShaderGradient, ShaderGradientCanvas } from '@shadergradient/react';
 function App() {
   return (
     <>
-      {/* Global reset + full-screen rules — works even without index.css */}
+      {/* Global reset + full-screen rules + canvas transparency force */}
       <style>{`
         html, body, #root {
           margin: 0;
           padding: 0;
           height: 100%;
           width: 100%;
-          /*overflow: hidden;*/
+          /* overflow: hidden; */ /* Keep commented if you want potential scroll later */
           background: #000;           /* fallback color */
         }
 
         body {
           overscroll-behavior: none;  /* prevents iOS bounce/scroll glow */
+        }
+
+        /* Force the WebGL canvas to transparent background */
+        canvas {
+          background: transparent !important;
         }
 
         /* Optional: better mobile handling (especially iOS Safari) */
@@ -35,7 +40,7 @@ function App() {
           height: '100%',
           overflow: 'hidden',
           background: '#000',
-          zIndex: -1,               // keeps it behind future content if needed
+          zIndex: -1, // keeps it behind future content if needed
         }}
       >
         <ShaderGradientCanvas
@@ -46,7 +51,7 @@ function App() {
             height: '100%',
             display: 'block',       // removes tiny gaps sometimes caused by inline-block
             pointerEvents: 'none',
-            background: 'transparent',  // ← Critical: prevents black fill if renderer doesn't clear with alpha
+            background: 'transparent', // extra safety layer
           }}
           pixelDensity={window.devicePixelRatio ?? 1.5}
           fov={45}
@@ -82,6 +87,24 @@ function App() {
           />
         </ShaderGradientCanvas>
       </div>
+
+      {/* Optional test overlay to confirm layering/transparency – uncomment if needed */}
+      {/* 
+      <div style={{
+        position: 'fixed',
+        inset: 0,
+        color: 'white',
+        fontSize: '5rem',
+        fontWeight: 'bold',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        pointerEvents: 'none',
+        zIndex: 10,
+      }}>
+        TEST – Should appear OVER the gradient!
+      </div>
+      */}
     </>
   );
 }
