@@ -10,7 +10,8 @@ function App() {
         height: '100vh',
         margin: 0,
         overflow: 'hidden',
-        position: 'relative', // helps with absolute positioning
+        position: 'relative',
+        background: '#000', // fallback color
       }}
     >
       <ShaderGradientCanvas
@@ -20,39 +21,45 @@ function App() {
       >
         <ShaderGradient
           animate="on"
-          type="plane"               // was "plane" in your code, but you had "type=waterPlane" earlier – pick one
-          cDistance={20}
-          cPolarAngle={110}
+          axesHelper="off"
+          brightness={1.2}
+          cAzimuthAngle={180}
+          cDistance={3.6}
+          cPolarAngle={90}
+          cameraZoom={1}
+          color1="#001F3F"
+          color2="#0047AB"
+          color3="#F0F0F0"
+          destination="onCanvas"
+          embedMode="off"
+          envPreset="city"
+          format="gif"
+          frameRate={10}
+          gizmoHelper="hide"
+          grain="off"
+          lightType="3d"
+          pixelDensity={1}
+          positionX={-1.4}
+          positionY={0}
+          positionZ={0}
+          range="disabled"
+          rangeEnd={40}
+          rangeStart={0}
+          reflection={0.1}
+          rotationX={0}
+          rotationY={10}
+          rotationZ={50}
+          shader="defaults"
+          type="waterPlane"
+          uAmplitude={1}
+          uDensity={1.3}
+          uFrequency={5.5}
           uSpeed={0.4}
-          uStrength={3}
-          color1="#ff6b6b"
-          color2="#4ecdc4"
-          color3="#45b7d1"
-          // add any other props you want, e.g.:
-          // lightType="3d"
-          // grain="off"
-          // reflection={0.2}
+          uStrength={4}
+          uTime={0}
+          wireframe={false}
         />
       </ShaderGradientCanvas>
-
-      {/* Overlay text/content – pointerEvents: 'none' lets clicks pass through to canvas if needed */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          color: 'white',
-          fontSize: '3rem',
-          fontWeight: 'bold',
-          pointerEvents: 'none',
-          zIndex: 1,
-          textShadow: '0 0 10px rgba(0,0,0,0.6)',
-        }}
-      >
-        Hello Shader Gradient!
-      </div>
     </div>
   );
 }
