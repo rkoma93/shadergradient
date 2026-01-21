@@ -11,7 +11,7 @@ function App() {
           padding: 0;
           height: 100%;
           width: 100%;
-          overflow: hidden;
+          /*overflow: hidden;*/
           background: #000;           /* fallback color */
         }
 
@@ -81,8 +81,6 @@ function App() {
           />
         </ShaderGradientCanvas>
       </div>
-
-      {/* ← If you later add UI/text on top, put it here with position: relative + zIndex: 1 */}
     </>
   );
 }
