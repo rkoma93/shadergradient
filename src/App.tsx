@@ -23,7 +23,7 @@ function App() {
       >
         <ShaderGradient
           animate="on"
-          // axesHelper="off"               ← remove (debug only / not exposed)
+          axesHelper="off"
           brightness={1.2}
           cAzimuthAngle={180}
           cDistance={3.6}
@@ -32,21 +32,21 @@ function App() {
           color1="#001F3F"
           color2="#0047AB"
           color3="#F0F0F0"
-          // destination="onCanvas"         ← remove (likely internal/Framer)
-          // embedMode="off"                ← remove
+          destination="onCanvas"
+          embedMode="off"
           envPreset="city"
-          // format="gif"                   ← remove (export feature)
-          // frameRate={10}                 ← remove
-          // gizmoHelper="hide"             ← remove
+          format="gif"
+          frameRate={10}
+          gizmoHelper="hide"
           grain="off"
           lightType="3d"
-          // pixelDensity={1}               ← remove (belongs on Canvas)
+          pixelDensity={1}
           positionX={-1.4}
           positionY={0}
           positionZ={0}
-          // range="disabled"               ← usually not needed / defaults fine
-          // rangeEnd={40}
-          // rangeStart={0}
+          range="disabled"
+          rangeEnd={40}
+          rangeStart={0}
           reflection={0.1}
           rotationX={0}
           rotationY={10}
@@ -58,7 +58,7 @@ function App() {
           uFrequency={5.5}
           uSpeed={0.4}
           uStrength={4}
-          // uTime={0}                      ← usually controlled internally when animate="on"
+          uTime={0}
           wireframe={false}
         />
       </ShaderGradientCanvas>
