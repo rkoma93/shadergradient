@@ -1,7 +1,7 @@
-"homepage": "https://rkoma93.github.io/shadergradient"
 {
   "name": "shadergradient",
   "private": true,
+  "homepage": "https://rkoma93.github.io/shadergradient",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
