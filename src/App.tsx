@@ -1,6 +1,5 @@
 // src/App.tsx
 import { ShaderGradient, ShaderGradientCanvas } from '@shadergradient/react';
-import './App.css';
 
 function App() {
   return (
