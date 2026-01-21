@@ -46,7 +46,6 @@ function App() {
     return () => window.removeEventListener('resize', updatePixelDensity);
   }, []);
 
-  // Simple mobile detection – helps tune performance
   const isLikelyMobile = /Mobi|Android|iPhone|iPad|iPod/.test(navigator.userAgent);
 
   return (
@@ -59,7 +58,7 @@ function App() {
         overflow: 'hidden',
         position: 'relative',
         background: '#000',
-        touchAction: 'none', // helps prevent unwanted scrolling on touch devices
+        touchAction: 'none',
       }}
     >
       <ShaderGradientCanvas
@@ -70,11 +69,10 @@ function App() {
         }}
         pixelDensity={isLikelyMobile ? Math.min(pixelDensity, 1.8) : pixelDensity}
         fov={isLikelyMobile ? 50 : 45}
-        performance={isLikelyMobile ? 'medium' : 'high'} // available in newer versions
+        powerPreference={isLikelyMobile ? 'default' : 'high-performance'} // optional hint
       >
         <ShaderGradient
           {...gradientProps}
-          // Optional mobile-friendly tuning
           {...(isLikelyMobile && {
             uDensity: 1.1,
             uStrength: 3.2,
