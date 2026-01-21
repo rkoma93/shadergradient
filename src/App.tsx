@@ -41,7 +41,7 @@ function App() {
           // gizmoHelper="hide"             ← remove
           grain="off"
           lightType="3d"
-          // pixelDensity={1}               ← remove (belongs on Canvas)
+          pixelDensity={1}
           positionX={-1.4}
           positionY={0}
           positionZ={0}
