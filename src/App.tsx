@@ -27,7 +27,7 @@ const gradientProps = {
   uAmplitude: 1,
   uDensity: 1.3,
   uFrequency: 5.5,
-  uSpeed: 0.4,
+  uSpeed: 0.3,
   uStrength: 4,
   wireframe: false,
 } as const;
@@ -51,8 +51,8 @@ function App() {
   return (
     <div
       style={{
-        width: '100vw',
-        height: '100vh',
+        width: '100%',
+        height: '100%',
         margin: 0,
         padding: 0,
         overflow: 'hidden',
